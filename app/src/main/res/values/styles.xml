@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="FontClock">
+        <item name="android:textSize">@dimen/font_132</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontStyle" tools:targetApi="o">normal</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_font_display_3</item>
+        <item name="android:fontFamily">@font/fira_sans_extralight</item>
+    </style>
+
+    <style name="FontDate">
+        <item name="android:textSize">@dimen/font_26</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontStyle" tools:targetApi="o">normal</item>
+        <item name="android:fontFamily">@font/fira_sans_regular</item>
+    </style>
+</resources>
