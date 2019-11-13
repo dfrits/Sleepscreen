@@ -1,17 +1,28 @@
 package com.example.myscreensaver
 
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.service.dreams.DreamService
 import android.view.View
 import android.widget.TextView
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinComponent
+import org.koin.core.context.startKoin
+import org.koin.core.get
 import java.text.SimpleDateFormat
 import java.util.*
 
 class SleepScreenService : DreamService(), KoinComponent {
-
     private val updateTimer = Timer(TIMER_TAG)
+
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@SleepScreenService)
+            modules(com.example.myscreensaver.di.modules())
+        }
+    }
 
     override fun onDreamingStarted() {
         super.onDreamingStarted()
@@ -31,6 +42,11 @@ class SleepScreenService : DreamService(), KoinComponent {
             View.SYSTEM_UI_FLAG_FULLSCREEN or
                     View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
                     View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+
+        val viewModel = get<NotificationController>()
+
+        val notificationListenerService = Intent(applicationContext, NotificationListener::class.java)
+        startService(notificationListenerService)
     }
 
     override fun onAttachedToWindow() {
